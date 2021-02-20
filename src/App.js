@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import TitleBar from "./components/TitleBar";
+import './App.css'
+import { BackgroundContainer, MainContainer } from "./components/Background/BackgroundElements";
+import TodoBar from "./components/TodoBar";
+import TodoList from "./components/TodoList";
+import TodoListProvider from "./components/TodoList/TodoListContext";
+import { TitleBarProvider } from "./components/TitleBar/TitleBarContext";
+import Background from "./components/Background";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TitleBarProvider>
+      <Background>
+        <TodoListProvider>
+          <MainContainer>
+            <TitleBar />
+            <TodoBar />
+            <TodoList />
+          </MainContainer>
+        </TodoListProvider>
+      </Background>
+    </TitleBarProvider>
   );
 }
 
